@@ -8,13 +8,13 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch({type: "GET_ITEMS_REQUEST"});
   }, []);
-
+  
   const handleDelete = async (id) => {
     const prompt = window.confirm("Are you sure");
     if (prompt) {
-      dispatch(deletePost(id));
+      dispatch({type: "DELETE_ITEM_REQUEST", id});
     }
   };
 
@@ -24,7 +24,7 @@ function Home() {
       {loading ? (
         <h2>Loading...</h2>
       ) : (
-        posts.map((post) => (
+        posts && posts.map((post) => (
           <div key={post.id} style={{ display: "flex", flexDirection: "row" }}>
             <div style={{ flex: 0.1 }}>
               <p>{post.id}</p>

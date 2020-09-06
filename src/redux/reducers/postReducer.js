@@ -7,13 +7,14 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case "GET_ITEMS":
+    case "GET_ITEMS_SUCCESS":
       return {
         ...state,
         posts: action.payload,
         loading: false,
       };
-    case "DELETE_ITEM":
+    case "DELETE_ITEM_SUCCESS":
+      console.log(action)
       return {
         ...state,
         loading: false,
